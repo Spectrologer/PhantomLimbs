@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+
+  <HediffDef ParentName="AddedBodyPartBase">
+    <defName>phantomlimb</defName>
+    <label>Phantom Limb</label>
+    <labelNoun>Phantom Limb</labelNoun>
+    <description>A shaped lump of precious metal inserted into socket of a missing limb. Skilled psycasters can utilize these foci to mimic an absent limb. All phantom limbs require psychic focus to maintain.</description>
+    <descriptionHyperlinks><ThingDef>phantomlimbImplant</ThingDef></descriptionHyperlinks>
+    <spawnThingOnRemoved>phantomlimbImplant</spawnThingOnRemoved>
+    <addedPartProps>
+      <solid>false</solid>
+      <betterThanNatural>false</betterThanNatural>
+    </addedPartProps>
+  </HediffDef>
+
+  <ThingDef ParentName="BodyPartBionicBase">
+    <defName>phantomlimbImplant</defName>
+    <label>Phantom Limb Foci</label>
+    <description> A shaped lump of precious metal inserted into the socket of a missing limb which assists a psycaster in channeling residual nerve signals into a phantom limb. A phantom limb requires constant psychic focus to maintain, resulting in moderate strain on other psychic abilities. It is inferior to a real limb for an inexperienced psycaster.</description>
+    <descriptionHyperlinks>
+      <RecipeDef>installPhantomLimb</RecipeDef>
+      <RecipeDef>installPhantomLimbArm</RecipeDef>
+    </descriptionHyperlinks>
+    <costList>
+      <Gold>20</Gold>
+      <Jade>10</Jade>
+    </costList>
+    <statBases>
+      <Mass>.5</Mass>
+    </statBases>
+  </ThingDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>installPhantomLimb</defName>
+    <label>install phantom leg</label>
+    <description>Install a Phantom Limb.</description>
+    <descriptionHyperlinks>
+      <ThingDef>phantomlimbImplant</ThingDef>
+      <HediffDef>phantomlimb</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing leg foci.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>phantomlimbImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>phantomlimbImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Leg</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>phantomlimb</addsHediff>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+    <defName>installPhantomLimbArm</defName>
+    <label>install phantom arm</label>
+    <description>Install a Phantom Limb.</description>
+    <descriptionHyperlinks>
+      <ThingDef>phantomlimbImplant</ThingDef>
+      <HediffDef>phantomlimb</HediffDef>
+    </descriptionHyperlinks>
+    <jobString>Installing arm foci.</jobString>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>phantomlimbImplant</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>phantomlimbImplant</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <appliedOnFixedBodyParts>
+      <li>Arm</li>
+    </appliedOnFixedBodyParts>
+    <addsHediff>phantomlimb</addsHediff>
+  </RecipeDef>
+
+</Defs>
