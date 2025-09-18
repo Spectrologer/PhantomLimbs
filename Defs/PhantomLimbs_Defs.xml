@@ -148,6 +148,9 @@
     <products>
       <phantomlimbImplant>1</phantomlimbImplant>
     </products>
+    <recipeUsers>
+      <li>CraftingSpot</li>
+    </recipeUsers>
   </RecipeDef>
 
   <ResearchProjectDef>
