@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Jules.PhantomLimbs</AssemblyName>
+    <OutputPath>Assemblies</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About/Hediff_PhantomLimb.cs" />
+    <Compile Include="About/HediffComp_PsychicFocusDrain.cs" />
+    <Compile Include="About/HediffComp_PartEfficiency.cs" />
+    <Compile Include="About/HediffCompProperties_PsychicFocusDrain.cs" />
+    <Compile Include="About/HediffCompProperties_PartEfficiency.cs" />
+  </ItemGroup>
+</Project>

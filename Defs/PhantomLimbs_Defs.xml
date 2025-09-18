@@ -2,17 +2,19 @@
 <Defs>
 
   <HediffDef ParentName="AddedBodyPartBase">
-    <hediffClass>Hediff_AddedPart</hediffClass>
+    <hediffClass>PhantomLimbs.Hediff_PhantomLimb</hediffClass>
     <defName>phantomlimb</defName>
     <label>Phantom Limb</label>
-    <labelNoun>Phantom Limb</labelNoun>
-    <description>A shaped lump of precious metal inserted into socket of a missing limb. Skilled psycasters can utilize these foci to mimic an absent limb. All phantom limbs require psychic focus to maintain.</description>
+    <labelNoun>a phantom limb</labelNoun>
+    <description>A shaped lump of precious metal inserted into the socket of a missing limb. Psycasters of sufficient skill (level 3 psylink or higher) can utilize these foci to mimic an absent limb. The limb requires a constant supply of psychic focus to remain functional; without it, the limb becomes inert but the implant remains.</description>
     <descriptionHyperlinks><ThingDef>phantomlimbImplant</ThingDef></descriptionHyperlinks>
-    <spawnThingOnRemoved>phantomlimbImplant</spawnThingOnRemoved>
     <comps>
       <li Class="PhantomLimbs.HediffCompProperties_PsychicFocusDrain">
+        <minPsylinkLevel>1</minPsylinkLevel>
         <psyfocusDrainPerSecond>0.005</psyfocusDrainPerSecond>
       </li>
+      <!-- This empty comp is just a marker for the drain comp to find and control -->
+      <li Class="PhantomLimbs.HediffCompProperties_PartEfficiency" />
     </comps>
     <addedPartProps>
       <solid>false</solid>
@@ -20,12 +22,24 @@
       <!-- Efficiency will be handled by another component later -->
       <partEfficiency>0.85</partEfficiency>
     </addedPartProps>
+    <stages>
+      <li>
+        <statOffsets>
+          <!-- Allow meditation even when mobility is impaired -->
+          <MeditationFocusStrength>0.1</MeditationFocusStrength>
+        </statOffsets>
+        <statFactors>
+          <!-- Allow meditation despite movement issues -->
+          <MeditationFocusStrength>1.0</MeditationFocusStrength>
+        </statFactors>
+      </li>
+    </stages>
   </HediffDef>
 
   <ThingDef ParentName="BodyPartBionicBase">
     <defName>phantomlimbImplant</defName>
     <label>Phantom Limb Foci</label>
-    <description> A shaped lump of precious metal inserted into the socket of a missing limb which assists a psycaster in channeling residual nerve signals into a phantom limb. A phantom limb requires constant psychic focus to maintain, resulting in moderate strain on other psychic abilities. It is inferior to a real limb for an inexperienced psycaster.</description>
+    <description>A shaped lump of precious metal inserted into the socket of a missing limb which assists a psycaster in channeling residual nerve signals into a phantom limb. A phantom limb requires a psylink of level 3 or higher and constant psychic focus to remain functional. If the psycaster runs out of focus, the limb becomes inert until their focus is restored. It is inferior to a real limb for an inexperienced psycaster.</description>
     <descriptionHyperlinks>
       <RecipeDef>installPhantomLimb</RecipeDef>
       <RecipeDef>installPhantomLimbArm</RecipeDef>
@@ -98,5 +112,51 @@
     </appliedOnFixedBodyParts>
     <addsHediff>phantomlimb</addsHediff>
   </RecipeDef>
+
+  <RecipeDef>
+    <defName>MakePhantomLimbImplant</defName>
+    <label>make phantom limb implant</label>
+    <description>Craft a phantom limb implant using precious metals.</description>
+    <jobString>Making phantom limb implant.</jobString>
+    <workAmount>5000</workAmount>
+    <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+    <workSkill>Crafting</workSkill>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Gold</li>
+          </thingDefs>
+        </filter>
+        <count>20</count>
+      </li>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Jade</li>
+          </thingDefs>
+        </filter>
+        <count>10</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Gold</li>
+        <li>Jade</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+    <products>
+      <phantomlimbImplant>1</phantomlimbImplant>
+    </products>
+  </RecipeDef>
+
+  <ResearchProjectDef>
+    <defName>PhantomLimb</defName>
+    <label>phantom limb</label>
+    <description>Research the creation of phantom limb implants, allowing psycasters to manifest prosthetic limbs through psychic focus.</description>
+    <techLevel>Neolithic</techLevel>
+    <baseCost>1000</baseCost>
+    <researchViewX>0</researchViewX>
+  </ResearchProjectDef>
 
 </Defs>
