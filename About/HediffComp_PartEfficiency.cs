@@ -40,7 +40,7 @@ namespace PhantomLimbs
         {
             if (!isActive)
             {
-                return 0f; // Inactive limbs have 0 efficiency
+                return 0.0001f; // Inactive limbs have effectively 0 efficiency
             }
             return initialEfficiency ?? parent.def.addedPartProps?.partEfficiency ?? 1f;
         }
