@@ -2,15 +2,23 @@
 <Defs>
 
   <HediffDef ParentName="AddedBodyPartBase">
+    <hediffClass>Hediff_AddedPart</hediffClass>
     <defName>phantomlimb</defName>
     <label>Phantom Limb</label>
     <labelNoun>Phantom Limb</labelNoun>
     <description>A shaped lump of precious metal inserted into socket of a missing limb. Skilled psycasters can utilize these foci to mimic an absent limb. All phantom limbs require psychic focus to maintain.</description>
     <descriptionHyperlinks><ThingDef>phantomlimbImplant</ThingDef></descriptionHyperlinks>
     <spawnThingOnRemoved>phantomlimbImplant</spawnThingOnRemoved>
+    <comps>
+      <li Class="PhantomLimbs.HediffCompProperties_PsychicFocusDrain">
+        <psyfocusDrainPerSecond>0.005</psyfocusDrainPerSecond>
+      </li>
+    </comps>
     <addedPartProps>
       <solid>false</solid>
       <betterThanNatural>false</betterThanNatural>
+      <!-- Efficiency will be handled by another component later -->
+      <partEfficiency>0.85</partEfficiency>
     </addedPartProps>
   </HediffDef>
 
